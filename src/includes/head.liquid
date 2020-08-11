@@ -17,6 +17,11 @@
         <link rel="feed" href="/articles/">
     {%- endif -%}
 
+    {% comment %} Indieweb {% endcomment %}
+    <link href="https://indieauth.com/auth" rel="authorization_endpoint"/>
+    <link href="https://tokens.indieauth.com/token" rel="token_endpoint"/>
+    {% comment %} <link href="https://celestial-micropub.herokuapp.com/micropub" rel="micropub"/> {% endcomment %}
+
 	{% comment %} Facebook Open Graph + Twitter {% endcomment %}
     <meta property="og:site_name" content="{{siteTitle}}" key="ogsitename"/>
     <meta property="og:title" content="{{pageTitle}}" key="ogtitle"/>
