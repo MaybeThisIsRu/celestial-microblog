@@ -1,0 +1,34 @@
+{
+	"title": "Jane Doe",
+	"subtitle": "",
+	"authors": [
+		{
+			"name": "Jane Doe",
+			"slug": "jane-doe",
+			"introduction": "I'm a florist and a mother of two kids. I work at <a href='https://thispersondoesnotexist.com'>This Person Does Not Exist</a>. I enjoy taking long walks at the beach and playing games on my Nintendo Switch.",
+			"roles": ["owner"],
+			"website": "/",
+			"socials": [
+				{
+					"slug": "email",
+					"label": "Email",
+					"username": "",
+					"link": ""
+				},
+				{
+					"slug": "twitter",
+					"label": "Twitter",
+					"username": "",
+					"link": ""
+				},
+				{
+					"slug": "github",
+					"label": "GitHub",
+					"username": "",
+					"link": ""
+				}
+			],
+			"picture": "/assets/img/jane-doe-this-person-does-not-exist.jpeg"
+		}
+	]
+}
