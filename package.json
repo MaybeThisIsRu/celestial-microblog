@@ -1,8 +1,11 @@
 {
-	"name": "smix-eleventy-starter",
-	"version": "0.0.6",
-	"description": "A gulp-based starter kit for @11ty/eleventy and Forestry CMS",
-	"main": "",
+	"name": "celestial-microblog",
+	"version": "0.1.0",
+	"description": "A static site micro-blog purely for experimenting with and moving Celestial forward.",
+	"engines": {
+		"node": "^12",
+		"npm": "^6"
+	},
 	"scripts": {
 		"clean": "rm -rf dist && mkdir -p dist/assets",
 		"develop": "gulp develop",
