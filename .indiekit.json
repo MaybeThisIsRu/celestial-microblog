@@ -1,0 +1,14 @@
+{
+	"syndicate-to": [],
+	"post-types": {
+		"note": {
+			"name": "Notes",
+			"icon": ":memo:",
+			"template": "src/layouts/templates/micro/note.njk",
+			"post": {
+				"path": "src/content/micro/notes/{{ published | date('yyyy-MM-dd') }}-{{slug}}.md",
+				"url": "notes/{{ published | date('yyyy/MM/dd') }}/{{slug}}/"
+			}
+		}
+	}
+}
