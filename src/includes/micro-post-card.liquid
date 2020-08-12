@@ -1,0 +1,18 @@
+<article class="mb-4 lg:mb-6 h-entry ">
+    <a href="{{ micro-post.url }}" class="text-lg">
+        {% case micro-post.data.layout %}
+        {% when 'note' %}
+        <span>📔</span>
+        {% when 'like' %}
+        <span>♥</span>
+        {% endcase %}
+        <time datetime="{{ micro-post.data.date }}">{{micro-post.data.date | friendlyDate}}</time>
+    </a>
+    <p>
+    {% if perma %}
+    {{content}}
+    {% else %}
+    {{micro-post.templateContent}}
+    {% endif %}
+    </p>
+</article>

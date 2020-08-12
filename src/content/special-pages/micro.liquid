@@ -1,0 +1,22 @@
+---
+layout: default
+title: "Microblog"
+pagination:
+  data: collections.microposts
+  size: 10
+  alias: microposts
+permalink: "/micro/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
+eleventyComputed:
+  content-description: "Microblog posts by {% getOwnerInfo 'name' %}"
+---
+
+{% comment %} Link to post-type specific pages {% endcomment %}
+
+<section>
+	{% include page-title title:title %}
+	<main>
+        {% for micropost in microposts %}
+        {% include micro-post-card micro-post:micropost perma:false %}
+        {% endfor %}
+	</main>
+</section>

@@ -8,6 +8,10 @@ module.exports = [
 		link: "/articles/"
 	},
 	{
+		title: "Microblog",
+		link: "/micro/"
+	},
+	{
 		title: "About",
 		link: "/about/"
 	}

@@ -4,7 +4,7 @@ permalink: "/micro/notes/{{ page.date | date: '%Y/%m/%d' }}/{{ page.fileSlug | s
 ---
 
 <article class="h-entry">
-    <header class="mb-5 lg:mb-10">
+    <header>
         <p class="text-sm my-0">
             <a href="{{page.url}}" class="u-url u-uid"><time datetime="{{page.date | dateInISO8601}}" class="dt-published">{{ page.date | friendlyDate }}</time></a>
             {% if updated %}

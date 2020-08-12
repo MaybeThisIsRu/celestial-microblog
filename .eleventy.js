@@ -66,6 +66,8 @@ module.exports = function(config) {
 	// *** Collections
 	// Articles
 	config.addCollection("articles", collections.articles);
+	config.addCollection("microposts", collections.microposts);
+	config.addCollection("notes", collections.notes);
 
 	// *** Custom rendering engine
 	const { Liquid } = require("liquidjs");
