@@ -34,6 +34,9 @@
         {% comment %} Extra content based on post-type, such as quoted author info {% endcomment %}
         {% case post-type %}
         {% when 'like' %}
+            {% unless perma %}
+            {% assign likeOf = micro-post.data.likeOf %}
+            {% endunless %}
             {% if likeOf.author %}
             <p class="h-cite u-like-of">
                 Liked <a class="u-url" href="{{likeOf.link}}">{{likeOf.link}}</a> by <span class="p-author h-card"><a class="u-url p-name" href="{{likeOf.authorLink}}">{{likeOf.author}}</a></span>
@@ -52,7 +55,7 @@
             </blockquote>
             {% endif %}
         {% when 'note' %}
-            <p class="e-content">{{micro-post-content}}</p>
+            <div class="e-content">{{micro-post-content}}</div>
         {% endcase %}
     </main>
     {% if perma %}
