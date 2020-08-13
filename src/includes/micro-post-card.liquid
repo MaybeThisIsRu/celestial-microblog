@@ -36,10 +36,10 @@
         {% when 'like' %}
             {% if likeOf.author %}
             <p class="h-cite u-like-of">
-                Liked <a class="u-url" href="{{likeOf.link}}">a post</a> by <span class="p-author h-card"><a class="u-url p-name" href="{{likeOf.authorLink}}">{{likeOf.author}}</a></span>
+                Liked <a class="u-url" href="{{likeOf.link}}">{{likeOf.link}}</a> by <span class="p-author h-card"><a class="u-url p-name" href="{{likeOf.authorLink}}">{{likeOf.author}}</a></span>
             </p>
             {% else %}
-            <p class="u-like-of">Liked <a class="u-url" href="{{likeOf.link}}">a post</a>.</p>
+            <p class="p-summary">Liked <a class="u-like-of" href="{{likeOf.link}}">{{likeOf.link}}</a>.</p>
             {% endif %}
         {% endcase %}
 
