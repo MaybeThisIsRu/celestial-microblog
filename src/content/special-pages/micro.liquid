@@ -16,7 +16,11 @@ eleventyComputed:
 	{% include page-title title:title %}
 	<main>
         {% for micropost in microposts %}
-        {% include micro-post-card micro-post:micropost perma:false %}
+        {% include micro-post-card,
+          micro-post:micropost,
+          post-type:micropost.data.layout,
+          perma:false
+        %}
         {% endfor %}
 	</main>
 </section>

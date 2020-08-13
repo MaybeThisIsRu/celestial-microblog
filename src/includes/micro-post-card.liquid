@@ -1,18 +1,68 @@
-<article class="mb-4 lg:mb-6 h-entry ">
-    <a href="{{ micro-post.url }}" class="text-lg">
-        {% case micro-post.data.layout %}
-        {% when 'note' %}
-        <span>📔</span>
+{% capture micro-post-content %}{% if perma %}{{ content }}{% else %}{{ micro-post.templateContent }}{% endif %}{% endcapture %}
+
+<article class="h-entry {% unless perma %}mb-4 lg:mb-6{% endunless %}">
+    <header>
+        <p class="text-sm my-0">
+            <a href="{{micro-post.url}}" class="u-url u-uid text-lg">
+                {% case post-type %}
+                {% when 'note' %}
+                <span>📔</span>
+                {% when 'like' %}
+                <span>♥</span>
+                {% endcase %}
+                <time datetime="{{micro-post.date | dateInISO8601}}" class="dt-published">{{ micro-post.date | friendlyDate }}</time>
+            </a>
+            {% if micro-post.data.updated %}
+                {% assign publishDate = micro-post.date | friendlyDate %}
+                {% assign updateDate = micro-post.data.updated | friendlyDate %}
+                {% unless publishDate == updateDate %}
+                    <span class="h5 text-xs lg:text-sm my-1 lg:mt-1 text-italic">(last updated on <time class="dt-updated" datetime="{{ micro-post.data.updated | dateInISO8601 }}">{{ micro-post.data.updated | friendlyDate }}</time>)</span>
+                {% endunless %}
+            {% endif %}
+        </p>
+        {%- if micro-post.data.category.size > 0 -%}
+			<div class="post-tag mb-4 flex flex-row flex-wrap items-top lg:items-center">
+				<span class="text-gray-800 dm:text-gray-300 text-sm mr-1">Categorized under:</span>
+				{% for cat in micro-post.data.category %}
+				{% assign cat_name = cat | slug %}
+					<span class="text-gray-600 dm:text-gray-400 text-sm hover:text-indiple-regular mr-1 p-category">#{{cat}}</span>
+				{% endfor %}
+			</div>
+		{%- endif -%}
+    </header>
+    <main>
+        {% comment %} Extra content based on post-type, such as quoted author info {% endcomment %}
+        {% case post-type %}
         {% when 'like' %}
-        <span>♥</span>
+            {% if likeOf.author %}
+            <p class="h-cite u-like-of">
+                Liked <a class="u-url" href="{{likeOf.link}}">a post</a> by <span class="p-author h-card"><a class="u-url p-name" href="{{likeOf.authorLink}}">{{likeOf.author}}</a></span>
+            </p>
+            {% else %}
+            <p class="u-like-of">Liked <a class="u-url" href="{{likeOf.link}}">a post</a>.</p>
+            {% endif %}
         {% endcase %}
-        <time datetime="{{ micro-post.data.date }}">{{micro-post.data.date | friendlyDate}}</time>
-    </a>
-    <p>
+
+        {% comment %} Quoted or self content {% endcomment %}
+        {% case post-type %}
+        {% when 'like' %}
+            {% if content %}
+            <blockquote class="e-content">
+                <p>{{micro-post-content}}</p>
+            </blockquote>
+            {% endif %}
+        {% when 'note' %}
+            <p class="e-content">{{micro-post-content}}</p>
+        {% endcase %}
+    </main>
     {% if perma %}
-    {{content}}
-    {% else %}
-    {{micro-post.templateContent}}
+    <footer>
+        {% render author-card,
+            authors: site.authors,
+            slug: micro-post.author,
+            hide: true,
+            post: true
+        %}
+    </footer>
     {% endif %}
-    </p>
 </article>

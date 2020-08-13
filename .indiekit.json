@@ -9,6 +9,14 @@
 				"path": "src/content/micro/notes/{{ published | date('yyyy-MM-dd') }}-{{slug}}.md",
 				"url": "/micro/notes/{{ published | date('yyyy/MM/dd') }}/{{slug}}/"
 			}
+		},
+		"like": {
+			"name": "Likes",
+			"template": "src/layouts/templates/like.njk",
+			"post": {
+				"path": "src/content/micro/likes/{{ published | date('yyyy-MM-dd') }}-{{slug}}.md",
+				"url": "/micro/likes/{{ published | date('yyyy/MM/dd') }}/{{slug}}/"
+			}
 		}
 	}
 }

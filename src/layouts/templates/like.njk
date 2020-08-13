@@ -1,0 +1,32 @@
+---
+layout: like
+
+title: "{{ published | date('yyyy-MM-dd') }}-{{ slug }}"
+
+date: {{ published }}
+
+author: 'anon-microblogger'
+
+{%- if likeOf %}
+likeOf:
+    link: {{ likeOf }}
+{%-endif %}
+
+{%- if category %}
+category:
+{%- for item in category %}
+- {{ item }}
+{%- endfor %}
+{%- endif %}
+
+{%- if syndicateTo %}
+syndicate-to:
+{%- for item in syndicateTo %}
+- {{ item }}
+{%- endfor %}
+{%- endif %}
+
+permalink: "/micro/likes/{{ published | date('yyyy/MM/dd') }}/{{slug}}/"
+---
+
+{{ content | safe}}
