@@ -25,7 +25,7 @@ function cssPurgeMin() {
 		// Specify the paths to all of the template files in your project
 		content: paths.css.purge.content,
 
-		whitelist: ["hidden"],
+		whitelist: ["hidden", "emoji"],
 
 		// Include any special characters you're using in this regular expression
 		defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
