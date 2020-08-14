@@ -9,6 +9,8 @@
                 <span>📔</span>
                 {% when 'like' %}
                 <span>♥</span>
+                {% when 'reply' %}
+                <span>↪</span>
                 {% endcase %}
                 <time datetime="{{micro-post.date | dateInISO8601}}" class="dt-published">{{ micro-post.date | friendlyDate }}</time>
             </a>
@@ -31,7 +33,7 @@
 		{%- endif -%}
     </header>
     <main>
-        {% comment %} Extra content based on post-type, such as quoted author info {% endcomment %}
+        {% comment %} Quoted author's info {% endcomment %}
         {% case post-type %}
         {% when 'like' %}
             {% unless perma %}
@@ -44,9 +46,22 @@
             {% else %}
             <p class="p-summary">Liked <a class="u-like-of" href="{{likeOf.link}}">{{likeOf.link}}</a>.</p>
             {% endif %}
+        {% when 'reply' %}
+            {% unless perma %}
+            {% assign inReplyTo = micro-post.data.inReplyTo %}
+            {% endunless %}
+            {% if inReplyTo.author and inReplyTo.authorUrl %}
+            <p class="h-cite u-in-reply-to">
+                In reply to <a class="u-url" href="{{inReplyTo.url}}">{{inReplyTo.url}}</a> by <span class="p-author h-card"><a class="u-url p-name" href="{{inReplyTo.authorUrl}}">{{inReplyTo.author}}</a></span>
+                {%- if inReplyTo.context %}
+                <blockquote class="p-content"><p>{{inReplyTo.context}}</p></blockquote>
+                {%- endif %}
+            {% else %}
+            <p class="p-summary">In reply to <a class="u-in-reply-to" href="{{inReplyTo.url}}">{{inReplyTo.url}}</a>:</p>
+            {% endif %}
         {% endcase %}
 
-        {% comment %} Quoted or self content {% endcomment %}
+        {% comment %} Quoted content {% endcomment %}
         {% case post-type %}
         {% when 'like' %}
             {% if micro-post-content %}
@@ -54,7 +69,12 @@
                 <p>{{micro-post-content}}</p>
             </blockquote>
             {% endif %}
+        {% endcase %}
+
+        {% comment %} Own content {% endcomment %}
+        {% case post-type %}
         {% when 'note' %}
+        {% when 'reply' %}
             <div class="e-content">{{micro-post-content}}</div>
         {% endcase %}
     </main>

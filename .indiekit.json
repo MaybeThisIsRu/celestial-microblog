@@ -17,6 +17,14 @@
 				"path": "src/content/micro/likes/{{ published | date('yyyy-MM-dd') }}-{{slug}}.md",
 				"url": "/micro/likes/{{ published | date('yyyy/MM/dd') }}/{{slug}}/"
 			}
+		},
+		"reply": {
+			"name": "Replies",
+			"template": "src/layouts/templates/reply.njk",
+			"post": {
+				"path": "src/content/micro/replies/{{ published | date('yyyy-MM-dd') }}-{{slug}}.md",
+				"url": "/micro/replies/{{ published | date('yyyy/MM/dd') }}/{{slug}}/"
+			}
 		}
 	}
 }
