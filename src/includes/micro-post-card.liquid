@@ -1,7 +1,7 @@
 {% capture micro-post-content %}{% if perma %}{{ content }}{% else %}{{ micro-post.templateContent }}{% endif %}{% endcapture %}
 
-<article class="h-entry {% unless perma %}mb-4 lg:mb-6{% endunless %}">
-    <header>
+<article class="h-entry {% unless perma %}mb-4 lg:mb-8{% endunless %}">
+    <header class="mb-2">
         <p class="text-sm my-0">
             <a href="{{micro-post.url}}" class="u-url u-uid text-lg">
                 {% case post-type %}
