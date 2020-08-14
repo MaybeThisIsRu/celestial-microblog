@@ -49,7 +49,7 @@
         {% comment %} Quoted or self content {% endcomment %}
         {% case post-type %}
         {% when 'like' %}
-            {% if content %}
+            {% if micro-post-content %}
             <blockquote class="e-content">
                 <p>{{micro-post-content}}</p>
             </blockquote>
