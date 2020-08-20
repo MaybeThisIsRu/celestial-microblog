@@ -61,16 +61,6 @@
             {% endif %}
         {% endcase %}
 
-        {% comment %} Quoted content {% endcomment %}
-        {% case post-type %}
-        {% when 'like' %}
-            {% if micro-post-content %}
-            <blockquote class="e-content">
-                <p>{{micro-post-content}}</p>
-            </blockquote>
-            {% endif %}
-        {% endcase %}
-
         {% comment %} Own content {% endcomment %}
         {% case post-type %}
         {% when 'note' %}
