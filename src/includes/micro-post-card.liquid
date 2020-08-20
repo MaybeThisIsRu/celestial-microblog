@@ -1,5 +1,3 @@
-{% capture micro-post-content %}{% if perma %}{{ content }}{% else %}{{ micro-post.templateContent }}{% endif %}{% endcapture %}
-
 <article class="h-entry {% unless perma %}mb-4 lg:mb-8{% endunless %}">
     <header class="mb-2">
         <p class="text-sm my-0">
@@ -62,10 +60,12 @@
         {% endcase %}
 
         {% comment %} Own content {% endcomment %}
+        {% comment %} TODO Dry {% endcomment %}
         {% case post-type %}
         {% when 'note' %}
+            <div class="e-content">{% if perma %}{{ content }}{% else %}{{ micro-post.templateContent }}{% endif %}</div>
         {% when 'reply' %}
-            <div class="e-content">{{micro-post-content}}</div>
+            <div class="e-content">{% if perma %}{{ content }}{% else %}{{ micro-post.templateContent }}{% endif %}</div>
         {% endcase %}
     </main>
     {% if perma %}
