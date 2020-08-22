@@ -1,6 +1,14 @@
 {
 	"syndicate-to": [],
 	"post-types": {
+		"article": {
+			"name": "Articles",
+			"template": "src/layouts/templates/article.njk",
+			"post": {
+				"path": "src/content/articles/{{ published | date('yyyy-MM-dd') }}-{{name}}.md",
+				"url": "/articles/{{ published | date('yyyy/MM') }}/{{name}}/"
+			}
+		},
 		"note": {
 			"name": "Notes",
 			"icon": ":memo:",

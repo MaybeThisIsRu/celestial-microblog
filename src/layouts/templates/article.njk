@@ -1,0 +1,27 @@
+---
+layout: article
+
+title: {{ name }}
+
+date: {{ published }}
+
+author: 'anon-microblogger'
+
+{%- if category %}
+category:
+{%- for item in category %}
+- {{ item }}
+{%- endfor %}
+{%- endif %}
+
+{%- if syndicateTo %}
+syndicate-to:
+{%- for item in syndicateTo %}
+- {{ item }}
+{%- endfor %}
+{%- endif %}
+
+permalink: "/articles/{{ published | date('yyyy/MM') }}/{{name}}/"
+---
+
+{{ content | safe }}
