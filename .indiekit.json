@@ -5,8 +5,8 @@
 			"name": "Articles",
 			"template": "src/layouts/templates/article.njk",
 			"post": {
-				"path": "src/content/articles/{{ published | date('yyyy-MM-dd') }}-{{name}}.md",
-				"url": "/articles/{{ published | date('yyyy/MM') }}/{{name}}/"
+				"path": "src/content/articles/{{ published | date('yyyy-MM-dd') }}-{{ slug }}.md",
+				"url": "/articles/{{ published | date('yyyy/MM') }}/{{ slug }}/"
 			}
 		},
 		"note": {
