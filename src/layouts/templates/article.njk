@@ -21,7 +21,7 @@ syndicate-to:
 {%- endfor %}
 {%- endif %}
 
-permalink: "/articles/{{ published | date('yyyy/MM') }}/{{name}}/"
+permalink: "/articles/{{ published | date('yyyy/MM') }}/{{ slug }}/"
 ---
 
 {{ content | safe }}
